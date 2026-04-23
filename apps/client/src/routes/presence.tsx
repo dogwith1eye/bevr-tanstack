@@ -19,7 +19,8 @@ import {
   presenceSubscriptionAtom,
   WebSocketClient,
 } from "../lib/web-socket-client";
-import { Button } from "./ui/button";
+import { Button } from "@/components/ui/button";
+import { createFileRoute } from "@tanstack/react-router";
 
 /**
  * Build the current client list by replaying all events from the stream.
@@ -69,7 +70,11 @@ const buildClientListFromEvents = (
   return { clients, myClientId };
 };
 
-export function PresencePanel({ className }: { className?: string }) {
+export const Route = createFileRoute('/presence')({
+  component: PresenceComponent,
+})
+
+function PresenceComponent({ className }: { className?: string }) {
   const [eventsResult, startSubscription] = useAtom(presenceSubscriptionAtom);
 
   const setStatus = useAtomSet(WebSocketClient.mutation("setStatus"));

@@ -4,8 +4,8 @@ import { AlertCircle, Loader2, Send } from "lucide-react";
 import { type FC, useEffect, useMemo, useRef, useState } from "react";
 import { chatAtom } from "@/lib/atoms/chat-atom";
 import { cn } from "@/lib/utils";
-import { Badge } from "./ui/badge";
-import { Button } from "./ui/button";
+import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
 import {
   Card,
   CardAction,
@@ -13,10 +13,10 @@ import {
   CardFooter,
   CardHeader,
   CardTitle,
-} from "./ui/card";
-import { Input } from "./ui/input";
-import { Markdown } from "./ui/markdown";
-import { Segment, TokenUsage, ToolCall } from "./ui/segment";
+} from "@/components/ui/card";
+import { Input } from "@/components/ui/input";
+import { Segment, TokenUsage, ToolCall } from "@/components/ui/segment";
+import { createFileRoute } from "@tanstack/react-router";
 
 type Message = {
   role: "user" | "assistant" | "system";
@@ -32,7 +32,11 @@ type Message = {
   finishReason?: string | undefined;
 };
 
-export function ChatBox() {
+export const Route = createFileRoute('/chat')({
+  component: Chat,
+})
+
+function Chat() {
   const [result, runChat] = useAtom(chatAtom);
   const [input, setInput] = useState("");
   const [history, setHistory] = useState<Message[]>([]);

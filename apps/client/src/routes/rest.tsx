@@ -1,10 +1,15 @@
 import { Result, useAtom } from "@effect-atom/atom-react";
 import { helloAtom } from "@/lib/atoms/hello-atom";
-import { Button } from "./ui/button";
-import { Card, CardContent, CardHeader, CardTitle } from "./ui/card";
-import { ResponseCard } from "./ui/response-card";
+import { Button } from "@/components/ui/button";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { ResponseCard } from "@/components/ui/response-card";
+import { createFileRoute } from "@tanstack/react-router";
 
-export const RestCard = () => {
+export const Route = createFileRoute('/rest')({
+  component: RestComponent,
+})
+
+function RestComponent() {
   const [response, getHello] = useAtom(helloAtom);
 
   const handleApiCall = () => {
