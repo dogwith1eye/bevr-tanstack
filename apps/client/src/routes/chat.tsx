@@ -33,10 +33,10 @@ type Message = {
 };
 
 export const Route = createFileRoute('/chat')({
-  component: Chat,
+  component: ChatComponent,
 })
 
-function Chat() {
+function ChatComponent() {
   const [result, runChat] = useAtom(chatAtom);
   const [input, setInput] = useState("");
   const [history, setHistory] = useState<Message[]>([]);

@@ -3,6 +3,7 @@ import { TanStackRouterDevtools } from '@tanstack/react-router-devtools'
 import bun from "../assets/bun.svg";
 import effect from "../assets/effect.svg";
 import react from "../assets/react.svg";
+import tanstack from "../assets/tanstack.svg";
 import vite from "../assets/vite.svg";
 import { GithubIcon } from "../components/icon/Github";
 import { ThemeToggle } from "../components/theme-toggle";
@@ -52,11 +53,17 @@ function RootComponent() {
         />
         <img alt="Vite logo" height={64} src={vite} width={64} />
         <img alt="React logo" height={64} src={react} width={64} />
+        <img
+          alt="TanStack logo"
+          height={64}
+          src={tanstack}
+          width={64}
+        />
       </div>
 
       <div className="text-center">
-        <h1 className="font-black text-5xl">bEvr</h1>
-        <h2 className="font-bold text-2xl">Bun + Effect + Vite + React</h2>
+        <h1 className="font-black text-5xl">bEvrTS</h1>
+        <h2 className="font-bold text-2xl">Bun + Effect + Vite + React + TanStack</h2>
         <p className="text-muted-foreground">A typesafe fullstack monorepo</p>
       </div>
 
@@ -65,10 +72,7 @@ function RootComponent() {
           <NavigationMenuList>
             {PANELS.map(({ value, label }) => (
               <NavigationMenuItem key={value}>
-                <NavigationMenuLink
-                  render={<Link to={value} />}
-                  className="border-b-2 border-transparent data-[active]:border-primary rounded-none pb-2"
-                >
+                <NavigationMenuLink render={<Link to={value} activeProps={{ 'data-active': '' }} />}>
                   {label}
                 </NavigationMenuLink>
               </NavigationMenuItem>
@@ -86,11 +90,11 @@ function RootComponent() {
           render={(props) => (
             <a
               {...props}
-              href="https://www.lloydrichards.dev"
+              href="https://www.dogwith1eye.dev"
               target="_blank"
               rel="noopener"
             >
-              lloydrichards.dev
+              dogwith1eye.dev
             </a>
           )}
         />
@@ -99,7 +103,7 @@ function RootComponent() {
           render={(props) => (
             <a
               {...props}
-              href="https://github.com/lloydrichards/base_bevr-stack"
+              href="https://github.com/dogwith1eye/bevr-tanstack"
               target="_blank"
               rel="noopener noreferrer"
             >
@@ -112,59 +116,3 @@ function RootComponent() {
     </div>
   );
 }
-
-
-// function RootComponent() {
-//   return (
-//     <>
-//       <div className="p-2 flex gap-2 text-lg border-b">
-//         <Link
-//           to="/"
-//           activeProps={{
-//             className: 'font-bold',
-//           }}
-//           activeOptions={{ exact: true }}
-//         >
-//           Home
-//         </Link>{' '}
-//         <Link
-//           to="/posts"
-//           activeProps={{
-//             className: 'font-bold',
-//           }}
-//         >
-//           Posts
-//         </Link>{' '}
-//         <Link
-//           to="/route-a"
-//           activeProps={{
-//             className: 'font-bold',
-//           }}
-//         >
-//           Pathless Layout
-//         </Link>{' '}
-//         <Link
-//           to="/anchor"
-//           activeProps={{
-//             className: 'font-bold',
-//           }}
-//         >
-//           Anchor
-//         </Link>{' '}
-//         <Link
-//           // @ts-expect-error
-//           to="/this-route-does-not-exist"
-//           activeProps={{
-//             className: 'font-bold',
-//           }}
-//         >
-//           This Route Does Not Exist
-//         </Link>
-//       </div>
-//       <hr />
-//       <Outlet />
-//       {/* Start rendering router matches */}
-//       <TanStackRouterDevtools position="bottom-right" />
-//     </>
-//   )
-// }
