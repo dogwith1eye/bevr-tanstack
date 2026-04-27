@@ -15,6 +15,7 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
+import { Markdown } from "@/components/ui/markdown";
 import { Segment, TokenUsage, ToolCall } from "@/components/ui/segment";
 import { createFileRoute } from "@tanstack/react-router";
 
