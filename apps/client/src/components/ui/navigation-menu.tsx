@@ -145,7 +145,7 @@ const NavigationMenuLink = React.forwardRef<
     ref={ref}
     data-slot="navigation-menu-link"
     className={cn(
-      "block select-none rounded-none p-3 leading-none no-underline outline-none transition-colors hover:bg-muted hover:text-foreground focus:bg-muted focus:text-foreground text-xs font-medium",
+      "block select-none rounded-none p-3 leading-none no-underline outline-none transition-colors hover:bg-muted hover:text-foreground focus:bg-muted focus:text-foreground data-[active]:bg-muted data-[active]:text-foreground text-xs font-medium",
       className,
     )}
     {...props}
