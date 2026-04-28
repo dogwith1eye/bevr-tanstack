@@ -28,6 +28,19 @@ services:
     networks:
       - app-network
 
+  server-mcp-ui:
+    build:
+      context: .
+      dockerfile: ./apps/server-mcp-ui/Dockerfile
+    environment:
+      MCP_UI_PORT: ${MCP_UI_PORT:-9010}
+      OTEL_EXPORTER_OTLP_ENDPOINT: http://otel-collector:4318
+      OTEL_SERVICE_NAME: bevr-server-mcp-ui
+    expose:
+      - "${MCP_UI_PORT:-9010}"
+    networks:
+      - app-network
+
   client:
     build:
       context: .
@@ -42,6 +55,7 @@ services:
     depends_on:
       - server
       - server-mcp
+      - server-mcp-ui
 
   otel-collector:
     image: otel/opentelemetry-collector-contrib:0.116.1

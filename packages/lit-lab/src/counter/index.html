@@ -1,0 +1,149 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="color-scheme" content="light dark" />
+    <title>Counter Widget</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.20.1/cdn/themes/light.css"
+    />
+    <style>
+      :root {
+        font-family: var(
+          --font-sans,
+          var(--sl-font-sans, system-ui, sans-serif)
+        );
+        color: var(--color-text-primary, var(--sl-color-neutral-900, #1f1f1f));
+        --sl-color-primary-600: #4b3a2b;
+        --sl-color-primary-500: #6b533f;
+        --sl-border-radius-medium: 14px;
+      }
+
+      html,
+      body {
+        margin: 0;
+        padding: 0;
+        background: transparent;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        padding: 12px;
+        font-family: inherit;
+        color: inherit;
+        line-height: 1;
+        height: 76px;
+      }
+
+      .pill {
+        width: 100%;
+        max-width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 12px;
+        height: 52px;
+        padding: 10px 12px;
+        border-radius: var(--sl-border-radius-medium);
+        border: 1px solid
+          var(--color-border-secondary, var(--sl-color-neutral-200, #e4e4e7));
+        background: var(
+          --color-background-secondary,
+          var(--sl-color-neutral-0, #ffffff)
+        );
+        color: var(--color-text-primary, var(--sl-color-neutral-900, #1f1f1f));
+      }
+
+      .label strong {
+        font-size: 14px;
+        font-weight: 600;
+        letter-spacing: 0.01em;
+      }
+
+      .label span {
+        font-size: 11px;
+        color: var(
+          --color-text-secondary,
+          var(--sl-color-neutral-600, #616161)
+        );
+      }
+
+      .count {
+        min-width: 64px;
+        text-align: center;
+        font-size: 20px;
+        font-weight: 700;
+        font-family: var(
+          --font-mono,
+          var(--sl-font-mono, ui-monospace, monospace)
+        );
+        padding: 6px 12px;
+        border-radius: 999px;
+        background: var(
+          --color-background-primary,
+          var(--sl-color-neutral-100, #f4f4f5)
+        );
+        border: 1px solid
+          var(--color-border-secondary, var(--sl-color-neutral-200, #e4e4e7));
+      }
+
+      .actions {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        height: 32px;
+      }
+
+      sl-button {
+        display: inline-flex;
+        width: 32px;
+        height: 32px;
+      }
+
+      sl-button::part(base) {
+        font-weight: 600;
+        width: 32px;
+        height: 32px;
+      }
+    </style>
+    <script
+      type="module"
+      src="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.20.1/cdn/shoelace-autoloader.js"
+    ></script>
+    <script type="module" src="/src/counter/counter.ts"></script>
+  </head>
+  <body>
+    <div class="pill">
+      <div class="label">
+        <strong>Counter</strong>
+        <span>Lightweight demo</span>
+      </div>
+      <div class="count" id="count">0</div>
+      <div class="actions">
+        <sl-button
+          size="small"
+          circle
+          variant="default"
+          id="decrement"
+          type="button"
+        >
+          -
+        </sl-button>
+        <sl-button
+          size="small"
+          circle
+          variant="primary"
+          id="increment"
+          type="button"
+        >
+          +
+        </sl-button>
+      </div>
+    </div>
+  </body>
+</html>
